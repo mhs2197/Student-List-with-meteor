@@ -1,0 +1,84 @@
+<head>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Student List</h1>
+    </header>
+    <a class="waves-effect waves-light btn modal-trigger" href="#addStudentModal">Add Student</a>
+    <table class="centered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Date of Birth</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each students}}
+          {{> student}}
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  {{> addStudent}}
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('.modal').modal();
+      $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 150, // Creates a dropdown of 15 years to control year,
+        today: 'Today',
+        clear: 'Clear',
+        close: 'Ok',
+        closeOnSelect: false // Close upon selecting a date,
+      });
+    });
+  </script>
+</body>
+
+<template name="student">
+  <tr>
+    <td>{{Name}}</td>
+    <td>{{Email}}</td>
+    <td>{{Phone}}</td>
+    <td>{{DOB}}</td>
+  </tr>
+</template>
+
+<template name="addStudent">
+  <div id="addStudentModal" class="modal">
+    <div class="modal-content">
+      <h4>Add Student</h4>
+      <form class="add-form">
+        <div class="input-field">
+          <input id="newName" type="text" class="validate">
+          <label for="newName">Name</label>
+        </div>
+        <div class="input-field">
+          <input id="newEmail" type="email" class="validate">
+          <label for="newEmail">Email</label>
+        </div>
+        <div class="input-field">
+          <input id="newPhone" type="text" class="validate">
+          <label for="newPhone">Phone</label>
+        </div>
+        <div class="input-field">
+          <input id="newDOB" type="text" class="datepicker">
+          <label for="newDOB">Date of Birth</label>
+        </div>
+        <div class="input-field">
+          <input type="submit" value="Add" class="btn">
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
