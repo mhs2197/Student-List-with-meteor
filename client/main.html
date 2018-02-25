@@ -1,19 +1,18 @@
 <head>
-  <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-
-  <!-- Compiled and minified JavaScript -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>Student List</h1>
+      <h2>Student List</h2>
     </header>
-    <a class="waves-effect waves-light btn modal-trigger" href="#addStudentModal">Add Student</a>
-    <table class="centered">
+    <div class="add-btn">
+      <a class="waves-effect waves-light btn modal-trigger blue" href="#addStudentModal">Add Student</a>
+    </div>
+    <table class="centered striped">
       <thead>
         <tr>
           <th>Name</th>
@@ -35,7 +34,7 @@
       $('.modal').modal();
       $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
-        selectYears: 150, // Creates a dropdown of 15 years to control year,
+        selectYears: 150, // Creates a dropdown of 150 years to control year,
         today: 'Today',
         clear: 'Clear',
         close: 'Ok',
@@ -58,25 +57,30 @@
   <div id="addStudentModal" class="modal">
     <div class="modal-content">
       <h4>Add Student</h4>
+      <br>
       <form class="add-form">
         <div class="input-field">
+          <i class="material-icons prefix">account_circle</i>
           <input id="newName" type="text" class="validate">
           <label for="newName">Name</label>
         </div>
         <div class="input-field">
+          <i class="material-icons prefix">mail_outline</i>
           <input id="newEmail" type="email" class="validate">
           <label for="newEmail">Email</label>
         </div>
         <div class="input-field">
+          <i class="material-icons prefix">phone_iphone</i>
           <input id="newPhone" type="text" class="validate">
           <label for="newPhone">Phone</label>
         </div>
         <div class="input-field">
+          <i class="material-icons prefix">date_range</i>
           <input id="newDOB" type="text" class="datepicker">
           <label for="newDOB">Date of Birth</label>
         </div>
-        <div class="input-field">
-          <input type="submit" value="Add" class="btn">
+        <div class="input-field btn-pos-right">
+          <input type="submit" value="Add" class="btn red">
         </div>
       </form>
     </div>
