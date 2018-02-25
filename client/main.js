@@ -34,13 +34,19 @@ Template.addStudent.events({
     //   Phone: newPhone,
     //   DOB: newDOB
     // });
-    Meteor.call('students.insert', newName, newEmail, newPhone, newDOB);
+    if (newName == "" || newPhone == "" || newPhone == "" || newDOB == "")
+    {
+      alert("Empty Field Detected");
+    }
+    else
+    {
+      Meteor.call('students.insert', newName, newEmail, newPhone, newDOB);
+      target.newName.value = "";
+      target2.newEmail.value = "";
+      target3.newPhone.value = "";
+      target4.newDOB.value = "";
+      $('#addStudentModal').modal('close');
+    }
 
-    // Clear form
-    target.newName.value = "";
-    target2.newEmail.value = "";
-    target3.newPhone.value = "";
-    target4.newDOB.value = "";
-    $('#addStudentModal').modal('close');
   }
 });
